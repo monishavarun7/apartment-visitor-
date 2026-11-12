@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Apartment Visitor Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <div>
+                <h1>🏢 Apartment Visitor Management</h1>
+                <p>Manage visitors, check-ins, and check-outs easily.</p>
+            </div>
+
+            <div class="header-date">
+                <span id="currentDate"></span>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- MAIN DASHBOARD -->
+    <main class="container">
+
+        <!-- DASHBOARD STATISTICS -->
+        <section class="stats-container">
+
+            <div class="stat-card total-card">
+                <div class="stat-icon">👥</div>
+                <div>
+                    <h3>Total Visitors</h3>
+                    <p id="totalVisitors">0</p>
+                </div>
+            </div>
+
+            <div class="stat-card today-card">
+                <div class="stat-icon">📅</div>
+                <div>
+                    <h3>Today's Visitors</h3>
+                    <p id="todayVisitors">0</p>
+                </div>
+            </div>
+
+            <div class="stat-card inside-card">
+                <div class="stat-icon">🏠</div>
+                <div>
+                    <h3>Visitors Inside</h3>
+                    <p id="insideVisitors">0</p>
+                </div>
+            </div>
+
+            <div class="stat-card checkout-card">
+                <div class="stat-icon">🚪</div>
+                <div>
+                    <h3>Checked Out</h3>
+                    <p id="checkedOut">0</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ADD VISITOR SECTION -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>➕ Add New Visitor</h2>
+                    <p>Enter visitor details to register a new visitor.</p>
+                </div>
+            </div>
+
+            <form id="visitorForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="visitor_name">Visitor Name</label>
+
+                        <input
+                            type="text"
+                            id="visitor_name"
+                            name="visitor_name"
+                            placeholder="Enter visitor name"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="flat_no">Flat Number</label>
+
+                        <input
+                            type="text"
+                            id="flat_no"
+                            name="flat_no"
+                            placeholder="Example: A-101"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="purpose">Purpose of Visit</label>
+
+                        <select
+                            id="purpose"
+                            name="purpose"
+                            required>
+
+                            <option value="">Select purpose</option>
+                            <option value="Family Visit">Family Visit</option>
+                            <option value="Friend Visit">Friend Visit</option>
+                            <option value="Delivery">Delivery</option>
+                            <option value="Maintenance">Maintenance</option>
+                            <option value="Meeting">Meeting</option>
+                            <option value="Other">Other</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button type="submit" class="primary-btn">
+                        Register Visitor
+                    </button>
+
+                    <button type="reset" class="secondary-btn">
+                        Clear Form
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- VISITOR RECORDS SECTION -->
+        <section class="card">
+
+            <div class="section-heading visitor-heading">
+
+                <div>
+                    <h2>📋 Visitor Records</h2>
+                    <p>View and manage registered apartment visitors.</p>
+                </div>
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchVisitor"
+                        placeholder="Search visitors...">
+
+                </div>
+
+            </div>
+
+
+            <!-- VISITOR TABLE -->
+            <div class="table-container">
+
+                <table class="visitor-table">
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Visitor Name</th>
+                            <th>Phone</th>
+                            <th>Flat No</th>
+                            <th>Purpose</th>
+                            <th>Check In</th>
+                            <th>Check Out</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody id="visitorTable">
+
+                        <tr>
+                            <td colspan="9" style="text-align:center;">
+                                Loading visitors...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            Apartment Visitor Management System |
+            MCA Mini Project
+        </p>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+
+    <!-- CURRENT DATE -->
+    <script>
+        document.getElementById("currentDate").textContent =
+            new Date().toLocaleDateString("en-IN", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+            });
+    </script>
+
+</body>
+
+</html>
